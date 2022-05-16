@@ -6,6 +6,23 @@ const cors = require('cors')
 app.use(cors())
 app.use(express.json())
 
+const Todo = require('./models/Todo')
+
+app.get('/todos', async (req, res) => {
+  const todos = await Todo.find()
+
+  res.json(todos)
+})
+
+app.post('/todo/add', (req, res) => {
+  const todo = new Todo({
+    info: req.body.info
+  })
+
+  todo.save()
+  res.json(todo)
+})
+
 app.listen(3001, () => {
   console.log('Server is running on port 3001')
 })
