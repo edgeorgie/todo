@@ -23,6 +23,12 @@ app.post('/todo/add', (req, res) => {
   res.json(todo)
 })
 
+app.delete('/todo/delete/:id', async (req, res) => {
+  const todo = await Todo.findById(req.params.id)
+  
+  res.json(todo)
+})
+
 app.listen(3001, () => {
   console.log('Server is running on port 3001')
 })
