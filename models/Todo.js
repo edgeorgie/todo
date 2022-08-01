@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 const TodoSchema = new Schema({
-  info: {
+  text: {
     type: String,
     required: true
   },
